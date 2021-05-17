@@ -1,4 +1,4 @@
 class MembersController < ApplicationController
-  # テスト2
+  #テスト
   
 end
