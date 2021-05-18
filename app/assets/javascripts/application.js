@@ -18,6 +18,7 @@
 //= require turbolinks
 //= require jquery
 //= require_tree .
+
 $(function() {
   $(document).on('turbolinks:load', () => {
     $('#user_postal_code').jpostal({
