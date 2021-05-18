@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   devise_for :admins
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  root to: "public/homes#top", as: "top"
+  get "public/home/about" => "public/homes#about" ,as: "about"
+  
   namespace :admin do
+    get "home/top" => "homes#top", as: "top"
     resources :homes
     resources :genres
     resources :members
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
+    root to: "homes#top"
     resources :homes
     resources :cart_products
     resources :members
