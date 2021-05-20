@@ -21,7 +21,7 @@
           <nav>
           <ul class="navbar-nav ml-auto p-3">
           <% if member_signed_in? %>
-          <li class="nav-item"><%= link_to "マイページ",public_members_path, class: 'text-dark' %></li>
+          <li class="nav-item"><%= link_to "マイページ",public_member_path(current_member), class: 'text-dark' %></li>
           <li class="nav-item"><%= link_to "商品一覧",public_products_path, class: 'text-dark' %></li>
           <li class="nav-item"><%= link_to "カート",public_cart_products_path, class: 'text-dark' %></li>
           <li class="nav-item"><%= link_to "ログアウト",destroy_member_session_path, method: :delete, class: 'text-dark' %></li>

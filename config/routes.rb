@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :members,:controllers => {
-    :registrations => 'members/registrations',
-    :sessions => 'members/sessions'
-  }
+ # devise_for :members,:controllers => {
+  #  :registrations => 'members/registrations',
+  #   :sessions => 'members/sessions'
+  # }
   devise_for :admins,:controllers => {
     :registrations => 'admins/registrations',
     :sessions => 'admins/sessions'
@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     resources :products
     resources :receiveds
   end
-
+ devise_for :members,:controllers => {
+    :registrations => 'members/registrations',
+    :sessions => 'members/sessions'
+  }
 
 end
