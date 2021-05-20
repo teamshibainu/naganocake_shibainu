@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
- # devise_for :members,:controllers => {
-  #  :registrations => 'members/registrations',
-  #   :sessions => 'members/sessions'
-  # }
+  devise_for :members,:controllers => {
+    :registrations => 'members/registrations',
+     :sessions => 'members/sessions'
+   }
   devise_for :admins,:controllers => {
     :registrations => 'admins/registrations',
     :sessions => 'admins/sessions'
@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
+    put "/members/:id/hide" => "members#hide", as: 'members_hide'
+    get "/members/:id/withdrawal" => "members#withdrawal", as: 'members_withdrawal'
     root to: "homes#top"
     resources :homes
     resources :cart_products
@@ -29,9 +31,5 @@ Rails.application.routes.draw do
     resources :products
     resources :receiveds
   end
- devise_for :members,:controllers => {
-    :registrations => 'members/registrations',
-    :sessions => 'members/sessions'
-  }
 
 end

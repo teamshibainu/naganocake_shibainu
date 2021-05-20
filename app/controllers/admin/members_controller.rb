@@ -1,11 +1,9 @@
 class Public::MembersController < ApplicationController
   def show
-    binding.pry
     @member= Member.find(params[:id])
   end
 
   def edit
-    binding.pry
     @member = current_member
   end
 
