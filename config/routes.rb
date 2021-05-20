@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "home/top" => "homes#top", as: "top"
     resources :homes
-    resources :genres
+    resources :genres, only:[:index,:create,:edit,:update]
     resources :members
     resources :orders
     resources :orders_details
