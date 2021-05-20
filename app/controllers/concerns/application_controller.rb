@@ -4,13 +4,13 @@ class ApplicationController < ActionController::Base
     case resource
     when Admin
       admin_top_path
-    when User
+    when Member
       top_path
     end
   end
 
   def after_sign_out_path_for(resource)
-    if resource == :user
+    if resource == :member
       public_root_path
     elsif resource == :admin
       new_admin_session_path

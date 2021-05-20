@@ -5,6 +5,6 @@ class Admin::HomesController < ApplicationController
   
   private
   def if_not_admin
-    redirect_to public_root_path unless current_user.admin?
+    redirect_to public_root_path unless current_member.admin?
   end
 end
