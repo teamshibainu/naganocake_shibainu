@@ -1,6 +1,3 @@
-admin
-<% if admin_signed_in? %>
-    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-<% else %>
-    <%= link_to "ログイン", new_admin_session_path %>
-<% end %>
+admin top 画面ですが、いらないので、商品担当の方は、ルーティングを商品一覧に変えてください！<br>
+
+application_controller から　after_sign_in_path_for の　Admin の下のルートパスを変えてください!

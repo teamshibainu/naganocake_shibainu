@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
-  devise_for :admins
+  devise_for :members,:controllers => {
+    :registrations => 'members/registrations',
+    :sessions => 'members/sessions'
+  }
+  devise_for :admins,:controllers => {
+    :registrations => 'admins/registrations',
+    :sessions => 'admins/sessions'
+  }
   root to: "public/homes#top", as: "top"
   get "public/home/about" => "public/homes#about" ,as: "about"
-  
+
   namespace :admin do
     get "home/top" => "homes#top", as: "top"
     resources :homes
