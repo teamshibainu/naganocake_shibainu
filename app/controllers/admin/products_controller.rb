@@ -1,7 +1,7 @@
 class Admin::ProductsController < ApplicationController
   before_action :set_products, only: [:show, :edit, :update]
   before_action :set_genres, only: [:new, :edit, :index, :create, :update]
-  before_action :authenticate_admin!
+  # before_action :authenticate_admin!
 
   def new
     @product = Product.new
