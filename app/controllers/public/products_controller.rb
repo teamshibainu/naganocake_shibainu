@@ -1,11 +1,6 @@
-class Customer::ProductsController < ApplicationController
+class Public::ProductsController < ApplicationController
 
-  before_action :authenticate_customer!, only: [:show]
-
-  def top
-    @products = Product.all.order(created_at: :asc)
-    @genres = Genre.all
-  end
+  before_action :authenticate_public!, only: [:show]
 
 	def index
     @genres = Genre.all
