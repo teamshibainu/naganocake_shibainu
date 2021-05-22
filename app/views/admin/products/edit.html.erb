@@ -1,4 +1,3 @@
-<% provide(:title, "商品編集") %>
 <h2 class="head-line title_h2 text-center">商品編集</h2>
 <div class="row">
 
@@ -6,11 +5,11 @@
     <%= render "layouts/error_messages", resource: @product%>
     <div class="col-xs-4">
       <div class="img_field">
-        <%= attachment_image_tag(@product, :image, size: "250x180") %>
+        <%= attachment_image_tag(@product, :image_id, size: "250x180") %>
       </div>
 
       <div class="form-group">
-	      <%= f.attachment_field :image, class: " image" %>
+	      <%= f.attachment_field :image_id, class: " image" %>
       </div>
     </div>
 
