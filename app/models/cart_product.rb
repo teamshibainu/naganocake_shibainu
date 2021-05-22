@@ -1,2 +1,2 @@
-class CartProduct < ApplicationRecord
+class CartProduct < A
 end
