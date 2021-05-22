@@ -1,23 +1,23 @@
-class OrdersController < ApplicationController
+class Public::OrdersController < ApplicationController
   def index
-    @orders = current_user.orders
+    @orders = Order.all
   end
 
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
   end
-
+  
   def new
   end
-
-  def edit
+  
+  def order_confirm
   end
-
-  def update
+  
+  def create
   end
-
-  def destroy
+  
+  def complete
   end
 
   private

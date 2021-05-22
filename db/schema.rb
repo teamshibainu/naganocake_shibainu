@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2021_05_19_075812) do
     t.string "street_address"
     t.string "name"
     t.integer "payment_method"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

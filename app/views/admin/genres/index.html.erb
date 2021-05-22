@@ -12,6 +12,7 @@
     </tr>
   </table>
   <% end %>
+  <% if @genres.exists? %>
   <table class="table table-hover table-inverse">
     <thead>
       <th>ジャンル</th>
@@ -26,4 +27,8 @@
       <% end %>
     </tbody>
   </table>
+  <% else %>
+    <br><br>
+    <h4>まだジャンルが追加されていません。</h4>
+  <% end %>
 </div>
