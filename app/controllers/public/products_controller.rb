@@ -1,6 +1,4 @@
 class Public::ProductsController < ApplicationController
-  before_action :authenticate_member!, only: [:show]
-
 	def index
     @genres = Genre.all
     @products = Product.where(sale_status: true).page(params[:page]).per(8)
