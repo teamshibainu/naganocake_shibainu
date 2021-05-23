@@ -1,6 +1,5 @@
 class Public::ProductsController < ApplicationController
-
-  before_action :authenticate_public!, only: [:show]
+  before_action :authenticate_member!, only: [:show]
 
 	def index
     @genres = Genre.all

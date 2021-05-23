@@ -9,4 +9,13 @@ module ApplicationHelper
   def sub_price(sub)
     (tax_price(sub.product.price) * sub.quantity)
   end
+
+  # 合計金額の計算
+  def total_price(totals)
+    price = 0
+    totals.each do |total|
+      price  +=  sub_price(total)
+    end
+    return price
+  end
 end
