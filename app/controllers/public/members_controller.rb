@@ -10,8 +10,7 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
     @member.update(withdrawal_flag: true)
     reset_session
-    flash[:notice] = "またのご利用をお待ちしております。"
-    redirect_to top_path
+    redirect_to top_path, notice:"またのご利用をお待ちしております。"
   end
 
   def edit
@@ -21,8 +20,7 @@ class Public::MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      flash[:success] = "登録情報を変更しました"
-      redirect_to public_member_path(@member.id)
+      redirect_to public_member_path(@member.id), notice:"登録情報を変更しました。"
     else
       render :edit
     end
