@@ -1,16 +1,21 @@
 <div class="container">
   <div class="row">
     <table class="table table-hover table-bordered">
-      <thead>
-        <tr class="info">
-          <th>郵便番号</th>
-          <th>住所</th>
-          <th>宛名</th>
-          <th colspan="2"></th>
-        </tr>
-      </thead>
+      <div "col-md-10">
+        <thead>
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+      </div>
       <tbody>
-      <% receiveds.each do |received| %>
+        <% if @received.errors.any? %>
+          <%= @received.errors.count %>件のエラーが発生しています。正しく情報を入力してください!
+        <% end %>
+        <% receiveds.each do |received| %>
           <tr class="shipping-tr" id="destroy-">
             <td>
               <%= received.postal_code %>

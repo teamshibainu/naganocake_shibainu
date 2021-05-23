@@ -11,20 +11,18 @@ class Public::ReceivedsController < ApplicationController
   def create
     @received = Received.new(received_params)
     @received.member_id = current_member.id
-    @receiveds = current_member.address
+    @receiveds = current_member.receiveds
     if @received.save
-      flash.now[:notice] = "新規配送先を登録しました"
-      redirect_to public_receiveds_path
+      redirect_to public_receiveds_path, notice:"新しい配送先を追加しました。"
     else
-      render "index"
+      render :index
     end
   end
 
   def update
     @received = Received.find(params[:id])
     if @received.update(received_params)
-      flash[:success] = "配送先を変更しました"
-      redirect_to public_receiveds_path
+      redirect_to public_receiveds_path, notice:"配送情報を変更しました。"
     else
       render :edit
     end
