@@ -11,17 +11,22 @@ Admin.create!(
 )
 
 Genre.create!(
-    name: "ケーキ"
+    name: "ケーキ",
+    is_valid: [['有効', true], ['無効', false]]
   )
 Genre.create!(
-    name: "プリン"
+    name: "プリン",
+    is_valid: [['有効', true], ['無効', false]]
   )
 Genre.create!(
-    name: "焼き菓子"
+    name: "焼き菓子",
+    is_valid: [['有効', true], ['無効', false]]
   )
 Genre.create!(
-    name: "キャンディ"
+    name: "キャンディ",
+    is_valid: [['有効', true], ['無効', false]]
   )
 Genre.create!(
-    name: "チョコケーキ"
+    name: "チョコケーキ",
+    is_valid: [['有効', true], ['無効', false]]
   )
