@@ -1,5 +1,4 @@
 class Admin::ProductsController < ApplicationController
-  before_action :set_products, only: [:show, :edit, :update]
   before_action :set_genres, only: [:new, :edit, :index, :create, :update]
   before_action :authenticate_admin!
 
@@ -22,12 +21,15 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def update
+    @product = Product.find(params[:id])
     if @product.update(product_params)
       flash[:success] = "商品内容をを変更しました"
       redirect_to admin_product_path(@product)
