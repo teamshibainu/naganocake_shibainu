@@ -1,16 +1,15 @@
 class Public::ReceivedsController < ApplicationController
   def index
-    #@received = current_member.address
     @received = Received.new
     @receiveds = current_member.receiveds
   end
 
   def edit
-    @received = Receiveds.find(params[:id])
+    @received = Received.find(params[:id])
   end
 
   def create
-    @received = Received.new(receiveds_params)
+    @received = Received.new(received_params)
     @received.member_id = current_member.id
     @receiveds = current_member.address
     if @received.save
@@ -27,7 +26,7 @@ class Public::ReceivedsController < ApplicationController
       flash[:success] = "配送先を変更しました"
       redirect_to public_receiveds_path
     else
-      render "edit"
+      render :edit
     end
   end
 
@@ -35,16 +34,15 @@ class Public::ReceivedsController < ApplicationController
      @received = Received.find(params[:id])
     if@received.destroy
       @received = current_member.address
-      flash.now[:alert] = "配送先を削除しました"
-      redirect_to public_receiveds_path
+      redirect_to public_receiveds_path, notice:"配送先を削除しました。"
     else
-      render "index"
+      render :index
     end
   end
 
   private
 
-  def receiveds_params
+  def received_params
     params.require(:received).permit(:postal_code, :street_address, :name)
   end
 end
