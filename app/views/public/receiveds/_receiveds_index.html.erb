@@ -1,29 +1,35 @@
-<table class="table table-hover table-bordered">
-  <thead>
-    <tr class="info">
-      <th>郵便番号</th>
-      <th>住所</th>
-      <th>宛名</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <% receiveds.each do |received| %>
-      <tr class="shipping-tr" id="destroy-<%= received.id %>">
-        <td>
-          <%= received.street_address %>
-        </td>
-        <td class="text-left">
-          <%= received.name %>
-        </td>
-        <td>
-          <%= link_to "編集する",edit_public_received_path(received), class: "glyphicon glyphicon-pencil btn-sm btn-primary" %>
-        </td>
-        <td>
-          <%= link_to "削除する",public_received_path(received), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, local: true, class: "glyphicon glyphicon-trash btn-sm btn-danger " %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr class="info">
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>宛名</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% receiveds.each do |received| %>
+          <tr class="shipping-tr" id="destroy-">
+            <td>
+              <%= received.postal_code %>
+            </td>
+            <td>
+              <%= received.street_address %>
+            </td>
+            <td class="text-left">
+              <%= received.name %>
+            </td>
+            <td>
+              <%= link_to "編集する",edit_public_received_path(received), class: "glyphicon glyphicon-pencil btn-sm btn-primary" %>
+            </td>
+            <td>
+              <%= link_to "削除する",public_received_path(received), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, local: true, class: "glyphicon glyphicon-trash btn-sm btn-danger " %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
