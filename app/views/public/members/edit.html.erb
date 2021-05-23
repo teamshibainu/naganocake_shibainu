@@ -10,32 +10,32 @@
           <tbody>
             <tr>
               <td>
-                <%= f.label :"氏名", class: "col-xs-3 control-label" %>
+                <%= f.label :"氏名", class: "col-xs-3" %>
               </td>
               <td>
-                <%= f.text_field :last_name, class: "col-12 form-control-static name" %>
+                <%= f.text_field :last_name, class: "col-12" %>
               </td>
               <td>
-                <%= f.text_field :first_name, class: "col-12 form-control-static name" %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= f.label :"フリガナ", class: "col-xs-3 control-label" %>
-              </td>
-              <td>
-                <%= f.text_field :last_name_kana, class: "col-12 form-control-static name" %>
-              </td>
-              <td>
-                <%= f.text_field :first_name_kana, class: "col-12 form-control-static name" %>
+                <%= f.text_field :first_name, class: "col-12" %>
               </td>
             </tr>
             <tr>
               <td>
-                <%= f.label :"郵便番号", class: "col-xs-3 control-label" %>
+                <%= f.label :"フリガナ", class: "col-xs-3" %>
               </td>
               <td>
-                <%= f.text_field :postal_code, class: "col-12 form-control-static" %>
+                <%= f.text_field :last_name_kana, class: "col-12" %>
+              </td>
+              <td>
+                <%= f.text_field :first_name_kana, class: "col-12" %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.label :"郵便番号", class: "col-xs-3" %>
+              </td>
+              <td>
+                <%= f.text_field :postal_code, class: "col-12" %>
               </td>
             </tr>
             <tr>
@@ -43,23 +43,23 @@
                 <%= f.label :"住所", class: "col-xs-3" %>
               </td>
               <td>
-                <%= f.text_field :address, class: "col-12 form-control-static" %>
+                <%= f.text_field :address, class: "col-12" %>
               </td>
             </tr>
             <tr>
               <td>
-                <%= f.label :"電話番号(ハイフンなし)", class: "col-xs-3 control-label" %>
+                <%= f.label :"電話番号(ハイフンなし)", class: "col-xs-3" %>
               </td>
               <td>
-                <%= f.text_field :phone_number, class: "col-12 form-control-static" %>
+                <%= f.text_field :phone_number, class: "col-12" %>
               </td>
             </tr>
             <tr>
               <td>
-                <%= f.label :"メールアドレス", class: "col-xs-3 control-label" %>
+                <%= f.label :"メールアドレス", class: "col-xs-3" %>
               </td>
               <td>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-12 form-control-static" %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-12" %>
               </td>
             </tr>
             <tr>
@@ -67,12 +67,12 @@
                 <%= f.submit "編集内容を保存する", class: "btn btn-primary" %>
               </td>
               <td>
-                <%= link_to '退会する', public_members_withdrawal_path, class: "glyphicon glyphicon-tint btn btn-danger "%>
+                <%= link_to '退会する', public_members_withdrawal_path, class: "btn btn-danger "%>
               </td>
             </tr>
             <tr>
               <td>
-                <%= link_to "戻る", public_member_path(current_member), class: "glyphicon glyphicon-home btn btn-info" %>
+                <%= link_to "戻る", public_member_path(current_member), class: "btn btn-info" %>
               </td>
             </tr>
           </tbody>
