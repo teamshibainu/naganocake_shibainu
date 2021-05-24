@@ -1,6 +1,4 @@
 class Public::ProductsController < ApplicationController
-  before_action :authenticate_member!, only: [:show]
-
 	def index
     @genres = Genre.all
     @products = Product.where(sale_status: true).page(params[:page]).per(8)
@@ -9,7 +7,7 @@ class Public::ProductsController < ApplicationController
 	def show
     @products = Product.all
     @product = Product.find(params[:id])
-    @cart_products = Cart_product.new
+    @cart_product = CartProduct.new
 	end
 
   def about
