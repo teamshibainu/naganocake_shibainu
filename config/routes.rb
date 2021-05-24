@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get "home/top" => "homes#top", as: "top"
     resources :homes
     resources :genres, only:[:index,:create,:edit,:update,:destroy,:show]
-    resources :members
+    resources :members, only:[:index,:show,:edit,:update]
     resources :orders
     resources :orders_details
     resources :products
