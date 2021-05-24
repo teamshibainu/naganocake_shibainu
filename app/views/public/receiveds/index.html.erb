@@ -1,34 +1,44 @@
 <p id="notice">
 <%= notice %>
 </p>
-<% provide(:title, "配送先登録/一覧") %>
-<div class="row">
-  <div  class="col-xs-12">
-    <h2 class="head-line text-center title_h2">配送先登録/一覧</h2>
-    <div id="error">
-      <%#= render "layouts/error_messages", resource: @shipping_address %>
-    </div>
-    <%= form_with(model: @received, :url => {:controller => "public/receiveds"}, local: true) do |f| %>
-      <div class="shipping_addres col-xs-10">
-        <div class="form-group col-xs-12">
-          <%= f.label :"郵便番号(ハイフンなし)" ,class: "col-xs-3 control-label" %>
-          <%= f.text_field :postal_code, class: "col-xs-4 form-control-static postal_code" %>
-        </div>
-
-        <div class="form-group col-xs-12">
-          <%= f.label :"住所" ,class: "col-xs-3 control-label" %>
-          <%= f.text_field :street_address, class: "col-xs-7 form-control-static address" %>
-        </div>
-
-        <div class="form-group col-xs-12">
-          <%= f.label :"宛名" ,class: "col-xs-3 control-label" %>
-          <%= f.text_field :name, class: "col-xs-4 form-control-static name" %>
-        </div>
-        <%= f.submit '登録する' ,class: "col-xs-2 pull-right btn-lg btn-success " %>
+<div class="center-block container">
+  <div class="row">
+    <div  class="col-md-10 col-md-offset-1">
+      <h2 class="head-line text-center">配送先登録/一覧</h2>
+      <%= form_with(model: @received, :url => {:controller => "public/receiveds"}, local: true) do |f| %>
+        <table class="col-12">
+          <tr>
+            <td>
+              <%= f.label :"郵便番号(ハイフンなし)" ,class: "col-xs-3" %>
+            </td>
+            <td>
+              <%= f.text_field :postal_code, class: "col-8" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            <%= f.label :"住所" ,class: "col-xs-3" %>
+            </td>
+            <td>
+            <%= f.text_field :street_address, class: "col-12" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            <%= f.label :"宛名" ,class: "col-xs-3" %>
+            </td>
+            <td>
+            <%= f.text_field :name, class: "col-8" %>
+            </td>
+            <td>
+            <%= f.submit '登録する' ,class: "mx-md-5 btn btn-success" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+      <div class="my-md-5">
+        <%= render "receiveds_index", receiveds: @receiveds %>
       </div>
-    <% end %>
-    <div id="create">
-      <%= render "receiveds_index", receiveds: @receiveds %>
     </div>
   </div>
 </div>

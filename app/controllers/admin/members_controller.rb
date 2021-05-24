@@ -10,10 +10,9 @@ class Public::MembersController < ApplicationController
   def update
     @member = current_member
     if @member.update(member_params)
-      flash[:success] = "登録情報を変更しました"
-      redirect_to members_path
+      redirect_to members_path, notice:"ユーザー情報を変更しました。"
     else
-      render :edit and return
+      render :edit
     end
   end
 

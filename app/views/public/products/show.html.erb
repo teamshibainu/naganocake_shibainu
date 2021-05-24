@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-4 col-xs-offset-2 product-show">
-      <%= attachment_image_tag(@product, :image_id, size: "340x220", fallback: "no_image.jpg" ) %>
+      <%= attachment_image_tag(@product, :image, size: "340x220", fallback: "no_image.jpg" ) %>
     </div>
 
     <div class="col-xs-6 product-show">
@@ -21,7 +21,7 @@
       <div class="field">
         <% if @product.sale_status == true %>
           <% if @product.genre.is_valid == true %>
-            <%= form_for(@cart_item , url: cart_items_path, method: :post) do |f| %>
+            <%= form_with model:@cart_product , url: public_cart_products_path, method: :post, local:true do |f| %>
               <%= f.hidden_field :product_id, value: @product.id %>
               <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
               <%= f.submit "カートに入れる", class: "glyphicon glyphicon-shopping-cart btn btn-primary" %>

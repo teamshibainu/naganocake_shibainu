@@ -1,46 +1,48 @@
+<p id="notice">
+<%= notice %>
+</p>
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <h2 class="head-line text-center title_h2">マイページ</h2>
-      <p><strong class="information-link"><i class="far fa-user"></i>登録情報</strong>
-      <%= link_to " 編集する", edit_public_member_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
-  		<%#= link_to " パスワードを変更する", edit_member_password_path, class: "glyphicon glyphicon-pencil btn btn-warning" %>
+      <h2 class="head-line text-center">マイページ</h2>
+      <p><strong><i class="far fa-user"></i>登録情報</strong>
+      <%= link_to " 編集する", edit_public_member_path, class: "btn btn-success" %>
       </p>
-      <table class="table table-bordered table-condensed">
+      <table class="table table-bordered">
         <tbody>
           <tr>
-            <td class="info col-xs-2">氏名</td>
-            <td class="text-left"><%= @member.first_name %> <%= @member.last_name %></td>
+            <td>氏名</td>
+            <td><%= @member.last_name %> <%= @member.first_name %></td>
           </tr>
           <tr>
-            <td class="info">カナ</td>
-            <td class="text-left"><%= @member.first_name_kana %> <%= @member.last_name_kana %></td>
+            <td>カナ</td>
+            <td><%= @member.last_name_kana %> <%= @member.first_name_kana %></td>
           </tr>
           <tr>
-            <td class="info">郵便番号</td>
-            <td class="text-left"><%= @member.postal_code %></td>
+            <td>郵便番号</td>
+            <td><%= @member.postal_code %></td>
           </tr>
           <tr>
-            <td class="info">住所</td>
-            <td class="text-left"><%= @member.address %></td>
+            <td>住所</td>
+            <td><%= @member.address %></td>
           </tr>
           <tr>
-            <td class="info">電話番号</td>
-  					<td class="text-left"><%= @member.phone_number %></td>
+            <td>電話番号</td>
+  					<td><%= @member.phone_number %></td>
           </tr>
           <tr>
-            <td class="info">メールアドレス</td>
-  					<td class="text-left"><%= @member.email %></td>
+            <td>メールアドレス</td>
+  					<td><%= @member.email %></td>
           </tr>
         </tbody>
       </table>
-      <div class="mypage-bottoms">
-        <p><strong class="shipping-link">配送先</strong>
-          <%= link_to " 一覧を見る", public_receiveds_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-folder-open btn btn-info" %>
+      <div>
+        <p><strong>配送先</strong>
+          <%= link_to " 一覧を見る", public_receiveds_path, data: {"turbolinks" => false}, class: "btn btn-info" %>
         </p>
         <p>
-          <strong class="order-link">注文履歴</strong>
-          <%= link_to " 一覧を見る", public_orders_path, class: "glyphicon glyphicon-folder-open btn btn-info" %>
+          <strong>注文履歴</strong>
+          <%= link_to " 一覧を見る", public_orders_path, class: "btn btn-info" %>
         </p>
       </div>
     </div>
