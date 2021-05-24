@@ -1,11 +1,11 @@
 <div class="container m-5">
   <div class="row pt-4">
     <div class="col-md-3"></div>
+    <% if @cart_products.exists? %>
     <h4 class="my-4"><span style="background-color:#EFEFEF">　ショッピングカート　</span></h4>
     <div class="col-3">
       <%= link_to "カートを空にする", public_cart_products_all_destroy_path, method: :delete, class: 'btn btn-danger' %>
     </div>
-    <% if @cart_products.exists? %>
     <table class="table table-hover table-inverse">
       <thead>
         <th>商品名</th>
@@ -32,10 +32,6 @@
         <% end %>
       </tbody>
     </table>
-    <% else %>
-      <br><br>
-      <h4>まだジャンルが追加されていません。</h4>
-    <% end %>
     <div class="col-3">
       <%= link_to "情報入力に進む", new_public_order_path, class: 'btn btn-info' %>
     </div>
@@ -48,5 +44,9 @@
         <td><%= @total_price.floor.to_s(:delimited) %></td>
       </tr>
     </table>
+    <% else %>
+      <br><br>
+      <h4>まだジャンルが追加されていません。</h4>
+    <% end %>
   </div>
 </div>
