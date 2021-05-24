@@ -15,7 +15,7 @@ class Public::ProductsController < ApplicationController
 
 	private
 	def product_params
-	  parmas.require(:product).permit(:image_id ,:name, :description, :price, :sale_status)
+	  parmas.require(:product).permit(:image ,:name, :description, :price, :sale_status)
 	end
 
 end
