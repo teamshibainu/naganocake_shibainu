@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get "home/top" => "homes#top", as: "top"
     resources :homes
     resources :genres, only:[:index,:create,:edit,:update,:destroy,:show]
-    resources :members
+    resources :members, only:[:index,:show,:edit,:update]
     resources :orders
     resources :orders_details
     resources :products
@@ -23,8 +23,11 @@ Rails.application.routes.draw do
   namespace :public do
     put "/members/:id/hide" => "members#hide", as: 'members_hide'
     get "/members/:id/withdrawal" => "members#withdrawal", as: 'members_withdrawal'
+    post "/members/order_confirm" => "orders#order_confirm", as: 'order_confirm'
+    get  "/members/complete" => "orders#complete", as: 'complete'
     root to: "homes#top"
     resources :homes
+    delete 'cart_products/all_destroy' => 'cart_products#all_destroy'
     resources :cart_products, only:[:index, :create, :update, :destroy]
     resources :members
     resources :orders
