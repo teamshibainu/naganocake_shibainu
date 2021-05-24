@@ -1,13 +1,14 @@
 <h2 class="head-line title_h2 text-center admin_product_index">商品一覧</h2>
+<div class="container">
 <div class="row">
-  <div class="col-xs-10 col-xs-offset-1">
+  <div class="col-xs-10">
     <%= link_to new_admin_product_path, data: {"turbolinks" => false}, class: "btn btn-warning pull-right new_product" do %>
       <i class="fas fa-plus"></i>
       新規商品登録
     <% end %>
 
-    <table class="table table-hover table-bordered table-condensed">
-      <thead>
+    <table class="table table-hover">
+      <thead class="thead-light">
         <tr class="info">
           <th>商品ID</th>
           <th>商品名</th>
@@ -20,31 +21,31 @@
       <tbody>
 				<% @products.each do |product| %>
   				<tr>
-            <td class="info col-xs-1">
+            <td class="info align-middle col-xs-1">
               <%= product.id %>
             </td>
-            <td class="text-left">
+            <td class="text-left align-middle">
               <%= link_to admin_product_path(product), class: "btn-link" do %>
                 <%= product.name %>
               <% end %>
             </td>
-            <td class="text-right col-xs-1">
-              ¥<%= product.price.to_s(:delimited) %>
+            <td class="text-left align-middle col-xs-1">
+              <%= product.price.to_s(:delimited) %>
             </td>
-            <td class="text-left col-xs-3">
+            <td class="text-left align-middle col-xs-3">
               <%= product.genre.name %>
             </td>
-            <td class="col-xs-2">
+            <td class="align-middle col-xs-2">
               <% if product.sale_status == true %>
-      					<p><i class="fas fa-bullseye red"></i>販売中</p>
+      				  販売中
       				<% elsif product.sale_status == false %>
-      					<p><i class="fas fa-bullseye blue"></i>販売停止中</p>
+      				  販売停止中
       				<% end %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
-  </div>
     <div class="text-center"><%= paginate(@products) %></div>
+  </div>
 </div>
