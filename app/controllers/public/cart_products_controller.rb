@@ -2,13 +2,13 @@ class CartProductsController < ApplicationController
   before_action :cart_product_params, only: [:create, :update, :destroy]
 
   def index
-    @cart_products = current_cart.cart_items
+    @cart_products = cart_product.all
   end
 
 # 商品一覧画面から、「商品購入」を押した時のアクション
   def create
     if @cart_product.blank?
-      @cart_product = current_cart.cart_items.build(product_id: params[:product_id])
+      @cart_product = current_cart.cart_products.build(product_id: params[:product_id])
     end
 
     @cart_product.quantity += params[:quantity].to_i
@@ -29,7 +29,7 @@ class CartProductsController < ApplicationController
   end
 
   def all_destroy
-    @cart_products.destroy
+    @cart_products.destroy_all
     redirect_to public_cart_products_path
   end
 

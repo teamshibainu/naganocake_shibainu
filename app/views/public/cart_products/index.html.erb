@@ -13,7 +13,27 @@
           </tr>
         </thead>
         <tbody>
-          
+          <% @cart_product.cart_products.each do |product| %>
+            <tr>
+              <td>
+                <%= link_to public_product_path(product) do %>
+                  <%= attachment_image_tag product, :image, form: 'jpeg', size:"50x50" %>
+                <% end %>
+              </td>
+              <td>
+                <%= product.price %>円
+              </td>
+              <td>
+                <%= product.quantity %>
+              </td>
+              <td>
+                <%= product.price*product.quantity %>
+              </td>
+              <td>
+                <%= link_to "削除する", product_path(product.id), method: :delete, class:"btn btn-sm btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
