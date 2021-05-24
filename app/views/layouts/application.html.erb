@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <header>
+    <header class="pt-4 pb-3">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <% if admin_signed_in? %>
@@ -44,5 +44,10 @@
       </nav>
     </header>
     <%= yield %>
+    <footer class="pt-5 pb-4">
+      <div>
+        <p class="text-center">ながのCAKE</p>
+      </div>
+    </footer>
   </body>
 </html>
