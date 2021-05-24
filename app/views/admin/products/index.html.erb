@@ -1,15 +1,14 @@
 <h2 class="head-line title_h2 text-center admin_product_index">商品一覧</h2>
-<div class="container">
+<div class="center-block container">
 <div class="row">
-  <div class="col-xs-10">
     <%= link_to new_admin_product_path, data: {"turbolinks" => false}, class: "btn btn-warning pull-right new_product" do %>
       <i class="fas fa-plus"></i>
       新規商品登録
     <% end %>
 
-    <table class="table table-hover">
+    <table class="table center-block table-hover">
       <thead class="thead-light">
-        <tr class="info">
+        <tr>
           <th>商品ID</th>
           <th>商品名</th>
           <th>税抜価格</th>
@@ -21,18 +20,18 @@
       <tbody>
 				<% @products.each do |product| %>
   				<tr>
-            <td class="info align-middle col-xs-1">
+            <td class="align-middle col-xs-2">
               <%= product.id %>
             </td>
-            <td class="text-left align-middle">
+            <td class="text-left align-middle col-xs-2">
               <%= link_to admin_product_path(product), class: "btn-link" do %>
                 <%= product.name %>
               <% end %>
             </td>
-            <td class="text-left align-middle col-xs-1">
+            <td class="text-left align-middle col-xs-2">
               <%= product.price.to_s(:delimited) %>
             </td>
-            <td class="text-left align-middle col-xs-3">
+            <td class="text-left align-middle col-xs-6">
               <%= product.genre.name %>
             </td>
             <td class="align-middle col-xs-2">
@@ -46,6 +45,6 @@
         <% end %>
       </tbody>
     </table>
-    <div class="text-center"><%= paginate(@products) %></div>
   </div>
+  <%= paginate(@products) %>
 </div>
