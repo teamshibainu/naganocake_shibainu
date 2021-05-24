@@ -13,7 +13,7 @@ class Public::MembersController < ApplicationController
   end
 
   def update
-    @member = User.find(params[:id])
+    @member = Mem.find(params[:id])
     if @member.update(member_params)
       redirect_to members_path, notice:"ユーザー情報を変更しました。"
     else
