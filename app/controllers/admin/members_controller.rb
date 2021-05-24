@@ -1,14 +1,19 @@
 class Public::MembersController < ApplicationController
+
+  def index
+    @member = Member.all
+  end
+
   def show
     @member= Member.find(params[:id])
   end
 
   def edit
-    @member = current_member
+    @member = Member.find(params[:id])
   end
 
   def update
-    @member = current_member
+    @member = Member.find(params[:id])
     if @member.update(member_params)
       redirect_to members_path, notice:"ユーザー情報を変更しました。"
     else
