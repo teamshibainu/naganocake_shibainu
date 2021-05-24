@@ -2,7 +2,7 @@ class Public::CartProductsController < ApplicationController
   before_action :authenticate_member!
   def index
     @cart_products = CartProduct.all
-    @total_price = @cart_products.sum{|cart_product|cart_product.product.price * cart_product.quantity}
+    @total_price = @cart_products.sum{|cart_product|cart_product.product.price * cart_product.quantity * 1.10}
   end
 
 # 商品一覧画面から、「商品購入」を押した時のアクション
