@@ -1,7 +1,7 @@
-class Public::MembersController < ApplicationController
+class Admin::MembersController < ApplicationController
 
   def index
-    @member = Member.all
+    @members = Member.all
   end
 
   def show
