@@ -25,7 +25,7 @@ class Public::CartProductsController < ApplicationController
 # カート詳細画面から、「更新」を押した時のアクション
   def update
     @cart_product = CartProduct.find(params[:id])
-    @cart_product.update(quantity: params[:quantity].to_i)
+    @cart_product.update(quantity: params[:cart_product][:quantity].to_i)
     redirect_to public_cart_products_path
   end
 
@@ -34,6 +34,12 @@ class Public::CartProductsController < ApplicationController
     @cart_product = CartProduct.find(params[:id])
     @cart_product.destroy
     redirect_to public_cart_products_path
+  end
+
+  def all_destroy
+    @cart_products = CartProduct.all
+    @cart_products.destroy_all
+    redirect_to public_products_path
   end
 
   private

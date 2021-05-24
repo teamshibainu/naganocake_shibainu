@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get "/members/:id/withdrawal" => "members#withdrawal", as: 'members_withdrawal'
     root to: "homes#top"
     resources :homes
+    delete 'cart_products/all_destroy' => 'cart_products#all_destroy'
     resources :cart_products, only:[:index, :create, :update, :destroy]
     resources :members
     resources :orders
