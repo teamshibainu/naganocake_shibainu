@@ -1,7 +1,7 @@
-<h2 class="head-line title_h2 text-center">商品新規登録</h2>
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>新規商品登録</h2>
       <%= form_with model:@product, url: admin_products_path, local:true, method: :post, class: "form-horizontal" do |f| %>
 
         <%= render "layouts/error_messages", resource: @product %>
