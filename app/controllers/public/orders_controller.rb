@@ -8,16 +8,16 @@ class Public::OrdersController < ApplicationController
     @cart_products = current_member.cart_products
     @order = Order.new(member: current_member,payment_method: params[:order][:payment_method])
     @order.billing_amount = current_member.cart_products.joins(:product).sum("products.price*quantity*1.1")+800
-    if params[:order][:street_address] == "residence"
+    if params[:order][:addresses] == "residence"
       @order.postal_code = current_member.postal_code
-      @order.street_address = current_member.residence
-      @order.name = current_member.name
-    elsif params[:order][:street_address] == "received"
+      @order.street_address = current_member.address
+      @order.name = current_member.last_name + current_member.first_name
+    elsif params[:order][:addresses] == "received"
       received = Receiveds.find(params[:order][addresse_id])
       @order.postal_code = received.postal_code
       @order.street_address = received.street_address
       @order.name = received.neme
-    elsif params[:order][:street_addresses] == "new_street_address"
+    elsif params[:order][:addresses] == "new_street_address"
       @order.postal_code = params[:order][:postal_code]
       @order.street_address = params[:order][:street_address]
       @order.name = params[:order][:name]
@@ -43,6 +43,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.member_id = current_member.id
     @order.save
     #byebug
     if params[:order][:received] == "1"
@@ -58,11 +59,16 @@ class Public::OrdersController < ApplicationController
       @order_details.quantity = cart_product.quantity
       @order_details.price = cart_product.product.price
       @order_details.production_status = 0
-      @order_details.save
+      if @order_details.save
+        redirect_to public_complete_path
+        @cart_products.destroy_all
+      else
+        render "order_confirm"
+      end
     end
     # 注文完了後、カート商品を空にする
-    redirect_to public_complete_path, notice:"注文が確定しました。"
-    @cart_products.destroy_all
+    #redirect_to public_complete_path, notice:"注文が確定しました。"
+    #@cart_products.destroy_all
   end
 
   def complete
