@@ -2,7 +2,7 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2><%= @member.last_name %><%= @member.first_name %>さんの会員情報編集</h2>
-      <%= form_with model:@member, local:true do |f| %>
+      <%= form_with model:@member, url:admin_member_path(@member.id), local:true do |f| %>
         <%= render 'layouts/error_messages', resource: @member %>
         <table class="col-12 table table-borderless">
           <tbody>
