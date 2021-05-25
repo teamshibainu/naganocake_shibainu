@@ -3,9 +3,6 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
-  def withdrawal
-  end
-
   def hide
     @member = Member.find(params[:id])
     @member.update(withdrawal_flag: true)
