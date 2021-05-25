@@ -54,7 +54,6 @@
             <%= link_to public_cart_products_path, class: "glyphicon glyphicon-shopping-cart btn btn-info col-xs-3 cart-back" do %>
               カート(<%= current_member.cart_products.count %>)へ戻る
             <% end %>
-            <%#= link_to "確認画面へ進む", public_order_confirm_path %>
             <%= f.submit "確認画面へ進む", class: "btn btn-success col-xs-5" %>
           </div>
         <% end %>
