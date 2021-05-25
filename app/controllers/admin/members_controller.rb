@@ -1,7 +1,7 @@
-class Public::MembersController < ApplicationController
+class Admin::MembersController < ApplicationController
 
   def index
-    @member = Member.all
+    @members = Member.all
   end
 
   def show
@@ -12,10 +12,18 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
+  #def withdrawal
+  #end
+
   def update
     @member = Member.find(params[:id])
+    #if @member.withdrawal_flag == true
+     # @member.update(withdrawal_flag: true)
+    #else
+     # @member.update(withdrawal_flag: false)
+    #end
     if @member.update(member_params)
-      redirect_to members_path, notice:"ユーザー情報を変更しました。"
+      redirect_to admin_member_path(@member.id), notice:"ユーザー情報を変更しました。"
     else
       render :edit
     end
@@ -23,7 +31,7 @@ class Public::MembersController < ApplicationController
 
   private
   def member_params
-    params.require(:member).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :phone_number)
+    params.require(:member).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :phone_number, :withdrawal_flag)
   end
 
 end
