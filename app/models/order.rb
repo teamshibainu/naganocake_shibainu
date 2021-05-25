@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :member
-  has_many :order_details, dependent: :destroy #プロダクトid内の商品の削除
+  has_many :orders_details, dependent: :destroy #プロダクトid内の商品の削除
 
   validates :street_address, :name, :postal_code, :billing_amount, :payment_method, presence: true
   validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
