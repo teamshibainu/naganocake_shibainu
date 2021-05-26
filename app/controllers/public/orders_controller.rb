@@ -61,9 +61,9 @@ class Public::OrdersController < ApplicationController
       @order_details.price = cart_product.product.price
       @order_details.production_status = 0
       @order_details.save
-      redirect_to public_complete_path
-      @cart_products.destroy_all
     end
+      @cart_products.destroy_all
+      redirect_to public_complete_path
     # 注文完了後、カート商品を空にする
     #redirect_to public_complete_path, notice:"注文が確定しました。"
     #@cart_products.destroy_all
