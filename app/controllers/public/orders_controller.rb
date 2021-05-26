@@ -35,7 +35,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = OrdersDetail.where(order_id: @order.id)
-    @cart_products = current_member.cart_products
+    # @cart_products = current_member.cart_products
   end
 
   def new

@@ -6,7 +6,7 @@ class Order < ApplicationRecord
   validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
   validates :postal_code, :billing_amount, numericality: { only_integer: true }
 
-  enum payment_method: {"クレジットカード": 0,"銀行振込": 1}
+  enum payment_method: {"クレジットカード": 0,"銀行振込": 1}git 
   enum status: {waiting: 0,paid_up: 1,preparing: 2,shipped: 3}
 
 end
