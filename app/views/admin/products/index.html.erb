@@ -1,9 +1,9 @@
 <div class="shiba-background">
   <div class="container">
     <div class="row">
-      <h2 class="col align-self-start">商品一覧</h2>
-      <div class = "text-center">
-        <%= link_to new_admin_product_path, data: {"turbolinks" => false}, class: "btn btn-warning pull-right new_product" do %>
+      <h2 class="col-2 text-center text-white align-self-start bg-secondary mt-4">商品一覧</h2>
+      <div class = "text-center offset-8 mt-4">
+        <%= link_to new_admin_product_path, data: {"turbolinks" => false}, class: "btn btn-warning" do %>
         <i class="fas fa-plus"></i>
           新規商品登録
         <% end %>

@@ -1,43 +1,43 @@
 <div class="shiba-background">
 	<div class="container">
 	  <div class="row">
-			<h2 class="col align-self-start">商品詳細</h2>
-			<div class="col-12 row align-items-center">
+		<h2 class="col-2 align-self-start text-center text-white bg-secondary mt-4">商品詳細</h2>
+		<div class="col-12 row align-items-center">
 
 
-		    <div class="col-7 offset-1">
-		      <p>
-		        商品名：<%= @product.name %>
-		      </p>
+	    <div class="product_show col-7 offset-1 text-white">
+	      <p>
+	        商品名：<%= @product.name %>
+	      </p>
 
-		      <p>
-		        商品説明：<%= @product.description %>
-					</p>
+	      <p>
+	        商品説明：<%= @product.description %>
+		  </p>
 
-		      <p>
-		        ジャンル：<%= @product.genre.name %>
-		      </p>
+	      <p>
+	        ジャンル：<%= @product.genre.name %>
+	      </p>
 
-		      <p>
-						税込価格：<%= tax_price(@product.price).to_s(:delimited) %>
-		      								(<%= @product.price.to_s(:delimited) %>) 円<br>
-						(税抜価格)
-					</p>
+	      <p>
+			税込価格：<%= tax_price(@product.price).to_s(:delimited) %>
+	      	(<%= @product.price.to_s(:delimited) %>) 円<br>
+			(税抜価格)
+		  </p>
 
-					<p>
-						販売ステータス：
-		        <% if @product.sale_status == true %>
-							販売中
-						<% elsif @product.sale_status == false %>
-							販売停止中
-						<% end %>
-					</p>
+		  <p>
+		    販売ステータス：
+	        <% if @product.sale_status == true %>
+			  販売中
+			<% elsif @product.sale_status == false %>
+			  販売停止中
+			<% end %>
+		  </p>
 
-				  <div class="col text-left">
-			      <%= link_to "編集する", edit_admin_product_path(@product), data: {"turbolinks" => false}, class: "btn btn-success" %>
-		      </div>
-		    </div>
-		  </div>
+		  <div class="col text-left">
+		    <%= link_to "編集する", edit_admin_product_path(@product), data: {"turbolinks" => false}, class: "btn btn-success" %>
+	      </div>
+	    </div>
 	  </div>
-	</div>
+    </div>
+  </div>
 </div>
