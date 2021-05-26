@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 2021_05_26_125819) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.boolean "is_valid", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_valid", default: false
   end
 
   create_table "members", force: :cascade do |t|
