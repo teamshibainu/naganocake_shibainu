@@ -55,7 +55,7 @@ Product.create!(
     price: "2000",
     genre_id: 1,
     sale_status: [['販売中', true], ['販売停止', false]],
-    image: open("./app/assets/images/shiba_cake1.jpg")
+    image: open("./app/assets/images/shiba_cake2.jpg")
 )
 
 Product.create!(
