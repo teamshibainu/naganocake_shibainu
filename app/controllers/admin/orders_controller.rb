@@ -7,17 +7,12 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = OrdersDetail.where(order_id: @order.id)
-    #@order_details = @order.orders_details
-  end
-
-  def edit
-    @order = Order.find(params[:id])
   end
 
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
-    redirect_to request.referer
+    redirect_to request.referer, notice:"注文ステータスを変更しました。"
   end
 
   private
