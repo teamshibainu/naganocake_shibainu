@@ -65,6 +65,7 @@ class Public::OrdersController < ApplicationController
     end
     @cart_products.destroy_all
     redirect_to public_complete_path
+
     # 注文完了後、カート商品を空にする
     #redirect_to public_complete_path, notice:"注文が確定しました。"
     #@cart_products.destroy_all
