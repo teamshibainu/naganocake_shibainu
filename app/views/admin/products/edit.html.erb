@@ -1,26 +1,19 @@
-<h2 class="head-line title_h2 text-center">商品編集</h2>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<div class="shiba-background">
+  <div class="container">
+    <div class="row">
+      <h2 class="col align-self-start">商品編集</h2>
+      <div class="col-12">
+        <div class="col text-center">
+        <%= form_with model:@product, url: admin_product_path, method: :patch, local:true, class: "form-horizontal" do |f| %>
+          <%= render "layouts/error_messages", resource: @product%>
+          <%= render "form_new_product", f: f %>
 
-  <%= form_with model:@product, url: admin_product_path, method: :patch, local:true, class: "form-horizontal" do |f| %>
-    <%= render "layouts/error_messages", resource: @product%>
-    <div class="col-xs-4">
-      <div class="img_field">
-        <%= attachment_image_tag(@product, :image, size: "250x180") %>
-      </div>
-
-      <div class="form-group">
-	      <%= f.attachment_field :image, class: " image" %>
-      </div>
-    </div>
-
-
-    <div class="col-xs-6">
-      <%= render "form_new_product", f: f %>
-      <div class="actions">
-	      <%= f.submit "変更を保存", class: "btn btn-primary pull-right" %>
+          <div class="col text-center">
+            <%= f.submit "変更を保存", class: "btn btn-primary pull-right" %>
+          </div>
+        <% end %>
+        </div>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>

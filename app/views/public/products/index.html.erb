@@ -1,16 +1,15 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-		<h2 class="product-headline head-line title_h2 text-center">
-		商品一覧
-		<span>
-			(全<%= @products.total_count %>件)
-		</span>
-		</h2>
-			<% @products.each do |product| %>
-			  <%= render "product_individual", product: product %>
-			<% end %>
-
-		<div class="text-center"><%= paginate(@products) %></div>
+<div class="shiba-background">
+	<div class="container">
+	  <div class="row">
+	  	<h2 class="col align-self-start">商品一覧(全<%= @products.total_count %>件)</h2>
+	  	<div class="col-12">
+				<div class="d-inline-flex flex-row flex-wrap">
+		  			<% @products.each do |product| %>
+		    			<%= render "product_individual", product: product %>
+		  			<% end %>
+				</div>
+	  	</div>
+	  </div>
+	  <%= paginate(@products) %>
 	</div>
 </div>

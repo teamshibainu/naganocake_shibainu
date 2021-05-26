@@ -1,16 +1,18 @@
-<div class="container">
-  <div class="row">
-    <h2 class="col align-self-start">新規商品登録</h2>
-    <div class="col-12">
-      <div class="col text-center">
-      <%= form_with model:@product, url: admin_products_path, local:true, method: :post, class: "form-horizontal" do |f| %>
-        <%= render "layouts/error_messages", resource: @product %>
-        <%= render "form_new_product", f: f %>
+<div class="shiba-background">
+  <div class="container">
+    <div class="row">
+      <h2 class="col align-self-start">新規商品登録</h2>
+      <div class="col-12">
+        <div class="col text-center">
+        <%= form_with model:@product, url: admin_products_path, local:true, method: :post, class: "form-horizontal" do |f| %>
+          <%= render "layouts/error_messages", resource: @product %>
+          <%= render "form_new_product", f: f %>
+        </div>
+  	    <div class="col text-center">
+  	      <%= f.submit "新規登録", class: "btn btn-success btn-lg text-center" %>
+  	    </div>
+        <% end %>
       </div>
-	    <div class="col text-center">
-	      <%= f.submit "新規登録", class: "btn btn-success btn-lg text-center" %>
-	    </div>
-      <% end %>
     </div>
   </div>
 </div>
