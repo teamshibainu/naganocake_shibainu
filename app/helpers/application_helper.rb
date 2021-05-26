@@ -24,4 +24,7 @@ module ApplicationHelper
     price += 800
     return price
   end
+  def total_quantity(quantity)
+    quantity += quantity
+  end
 end

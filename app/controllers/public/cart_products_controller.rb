@@ -18,8 +18,11 @@ class Public::CartProductsController < ApplicationController
       @cart_product.delete
     end
   end
-    @cart_product.save
-    redirect_to public_cart_products_path
+    if @cart_product.save
+      redirect_to public_cart_products_path
+    else
+      redirect_to request.referer
+    end
   end
 
 # カート詳細画面から、「更新」を押した時のアクション
