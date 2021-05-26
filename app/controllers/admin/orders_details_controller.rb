@@ -2,8 +2,9 @@ class Admin::OrdersDetailsController < ApplicationController
 
   def update
     @order_details = OrdersDetail.find(params[:id])
+    @order = @order_details.order
     if @order_details.update(order_detail_params)
-      redirect_to admin_order_path(@order_details.id), notice:"制作ステータスを変更しました。"
+      redirect_to admin_order_path(@order), notice:"制作ステータスを変更しました。"
     else
       render "show"
     end
