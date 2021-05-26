@@ -1,9 +1,5 @@
 class Public::OrdersController < ApplicationController
   include ApplicationHelper
-  def index
-    @orders = Order.all
-  end
-
   def order_confirm
     @cart_products = current_member.cart_products
     @order = Order.new(member: current_member,payment_method: params[:order][:payment_method])
@@ -31,9 +27,15 @@ class Public::OrdersController < ApplicationController
     end
   end
 
+  def index
+    @orders = current_member.orders
+    @order_details = OrdersDetail.where(order_id: @orders)
+  end
+
   def show
     @order = Order.find(params[:id])
-    @order_details = @order.order_details
+    @order_details = OrdersDetail.where(order_id: @order.id)
+    # @cart_products = current_member.cart_products
   end
 
   def new
@@ -59,12 +61,9 @@ class Public::OrdersController < ApplicationController
       @order_details.quantity = cart_product.quantity
       @order_details.price = cart_product.product.price
       @order_details.production_status = 0
-      if @order_details.save
-        redirect_to public_complete_path
-        @cart_products.destroy_all
-      else
-        render "order_confirm"
-      end
+      @order_details.save
+      redirect_to public_complete_path
+      @cart_products.destroy_all
     end
     # 注文完了後、カート商品を空にする
     #redirect_to public_complete_path, notice:"注文が確定しました。"
