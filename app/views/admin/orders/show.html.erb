@@ -1,6 +1,3 @@
-<p id="notice">
-<%= notice %>
-</p>
 <div class="container m-5">
   <div class="row">
     <div class="col-md-3"></div>
@@ -28,50 +25,33 @@
       <th><%= @order.status %></th>
       <%= form_with(model: @order, url: admin_order_path, method: :patch, local: true, class: "form-row") do |f| %>
       <th><%= f.select :status,Order.statuses.keys.map, class:"form-control form-control-sm col-6"  %></th>
-      <th><%= f.submit "更新", class: "btn btn-info" %></th>
+      <th><%= f.submit "更新" %></th>
       <% end %>
     </tr>
   </table>
-  <table class="table my-md-5	">
+  <table class="col-10">
     <thead>
       <tr>
-        <th scope="col">商品名</th>
-        <th scope="col">単価(税込)</th>
-        <th scope="col">数量</th>
-        <th scope="col">小計</th>
-        <th scope="col">制作ステータス</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>制作ステータス</th>
       </tr>
     </thead>
     <tbody>
       <% @order_details.each do |order_detail| %>
         <tr>
-          <td scope="col"><%= order_detail.product.name %></td>
-          <td scope="col"><%= order_detail.price %></td>
-          <td scope="col"><%= order_detail.quantity %></td>
-          <td scope="col"><%= ((order_detail.price * order_detail.quantity).floor).to_s(:delimited) %></td>
-          <td scope="col"><%= order_detail.production_status %></td>
-            <%= form_with(model: order_detail, url: admin_orders_detail_path, method: :patch, local: true, class: "form-row") do |f| %>
-              <td scope="col"><%= f.select :production_status,OrdersDetail.production_statuses.keys.map, class:"form-control form-control-sm col-6" %></td>
-              <td scope="col"><%= f.submit "更新", class: "btn btn-info" %></td>
+          <td><%= order_detail.product.name %></td>
+          <td><%= order_detail.price %></td>
+          <td><%= order_detail.quantity %></td>
+          <td><%= ((order_detail.price * order_detail.quantity).floor).to_s(:delimited) %></td>
+            <%= form_with(model: @order_details, url: admin_orders_detail_path, method: :patch, local: true, class: "form-row") do |f| %>
+              <td><%= f.select :production_status,OrdersDetail.production_statuses.keys.map, class:"form-control form-control-sm col-6" %></td>
+              <td><%= f.submit "更新" %></td>
             <% end %>
         </tr>
       <% end %>
     </tbody>
-  </table>
-  <table>
-    <tr>
-      <th>商品合計</th>
-      <th><%= total_price(@order_details).to_s(:delimited) %>円</th>
-    </tr>
-    <tr>
-      <th>送料</th>
-      <th>800円</th>
-    </tr>
-    <tr>
-      <th>請求金額合計</th>
-      <th><%= @order.billing_amount.to_s(:delimited) %>円</th>
-    </tr>
   </table>
 </div>

@@ -62,7 +62,7 @@
           <th>個数</th>
           <th>小計</th>
         </tr>
-        <% @order_details.each do |order_detail| %>
+        <% @order.orders_details.each do |order_detail| %>
           <tr>
             <td><%= order_detail.product.name %></td>
             <td class="text-right"><%= ((order_detail.price).floor).to_s(:delimited) %>円</td>
