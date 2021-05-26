@@ -48,11 +48,11 @@
       <% @order_details.each do |order_detail| %>
         <tr>
           <td scope="col"><%= order_detail.product.name %></td>
-          <td scope="col"><%= order_detail.price %></td>
+          <td scope="col"><%= ((order_detail.price * 1.1).floor).to_s(:delimited) %></td>
           <td scope="col"><%= order_detail.quantity %></td>
-          <td scope="col"><%= ((order_detail.price * order_detail.quantity).floor).to_s(:delimited) %></td>
+          <td scope="col"><%= ((order_detail.price * order_detail.quantity * 1.1).floor).to_s(:delimited) %></td>
           <td scope="col"><%= order_detail.production_status %></td>
-            <%= form_with(model: order_detail, url: admin_orders_detail_path, method: :patch, local: true, class: "form-row") do |f| %>
+            <%= form_with(model: order_detail, url: admin_orders_detail_path(order_detail.id), method: :patch, local: true, class: "form-row") do |f| %>
               <td scope="col"><%= f.select :production_status,OrdersDetail.production_statuses.keys.map, class:"form-control form-control-sm col-6" %></td>
               <td scope="col"><%= f.submit "更新", class: "btn btn-info" %></td>
             <% end %>
