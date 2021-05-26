@@ -25,5 +25,10 @@
 
 <div class="form-group row">
   <%= f.label :"販売ステータス", class: "col-sm-2" %>
-  <%= f.select :sale_status, [['販売中', true], ['販売停止', false]], prompt: "-- 選択してください --", class: "col-sm-6" %>
+  <%= f.radio_button :sale_status, :true %>
+  <%= f.label :sale_status, "販売中", {value: :true, style: "display: inline-block;"} %>
+  <%= f.radio_button :sale_status, :false %>
+  <%= f.label :sale_status, "販売停止", {value: :false, style: "display: inline-block;"} %>
+  <%#= f.label :"販売ステータス", class: "col-sm-2" %>
+  <%#= f.select :sale_status, [['販売中', true], ['販売停止', false]], prompt: "-- 選択してください --", class: "col-sm-6" %>
 </div>

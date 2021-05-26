@@ -1,9 +1,9 @@
 <div class="shiba-background">
   <div class="container">
     <div class="row">
-      <h2 class="col align-self-start">新規商品登録</h2>
+      <h2 class="col-3 align-self-start text-center text-white bg-secondary mt-4">新規商品登録</h2>
       <div class="col-12">
-        <div class="col text-center">
+        <div class="col text-center product_new_edit">
         <%= form_with model:@product, url: admin_products_path, local:true, method: :post, class: "form-horizontal" do |f| %>
           <%= render "layouts/error_messages", resource: @product %>
           <%= render "form_new_product", f: f %>
