@@ -73,10 +73,10 @@
                 <%= f.label :"会員ステータス", class: "col-xs-3" %>
               </td>
               <td>
-                <%= f.radio_button :withdrawal_flag, :true %>
-                <%= f.label :withdrawal_flag, "有効", value: :true %>
                 <%= f.radio_button :withdrawal_flag, :false %>
-                <%= f.label :withdrawal_flag, "退会", value: :false %>
+                <%= f.label :withdrawal_flag, "有効", value: :false %>
+                <%= f.radio_button :withdrawal_flag, :true %>
+                <%= f.label :withdrawal_flag, "退会", value: :true %>
               </td>
             </tr>
             <tr>
