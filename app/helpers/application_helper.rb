@@ -18,6 +18,7 @@ module ApplicationHelper
     end
     return price
   end
+
   def final_price(order)
     price = total_price(order)
     price += 800
