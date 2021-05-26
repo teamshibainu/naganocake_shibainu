@@ -1,5 +1,4 @@
 class Admin::OrdersDetailsController < ApplicationController
-
   def update
     @order_details = OrdersDetail.find(params[:id])
     @order = @order_details.order

@@ -34,7 +34,8 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_details = OrdersDetail.where(order_id: @order.id)
+    @order_details = @order.orders_details
+    # @order_details = OrdersDetail.where(order_id: @order.id)
     # @cart_products = current_member.cart_products
   end
 
@@ -62,8 +63,9 @@ class Public::OrdersController < ApplicationController
       @order_details.production_status = 0
       @order_details.save
     end
-      @cart_products.destroy_all
-      redirect_to public_complete_path
+    @cart_products.destroy_all
+    redirect_to public_complete_path
+
     # 注文完了後、カート商品を空にする
     #redirect_to public_complete_path, notice:"注文が確定しました。"
     #@cart_products.destroy_all
