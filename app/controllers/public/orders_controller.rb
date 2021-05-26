@@ -8,22 +8,22 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_member.postal_code
       @order.street_address = current_member.address
       @order.name = current_member.last_name + current_member.first_name
-    elsif params[:order][:addresses] == "received"
-      received = Receiveds.find(params[:order][addresse_id])
+    elsif params[:order][:addresses] == "shipping_addresses"
+      received = Received.find(params[:order][:received_street_address_id])
       @order.postal_code = received.postal_code
       @order.street_address = received.street_address
-      @order.name = received.neme
-    elsif params[:order][:addresses] == "new_street_address"
+      @order.name = received.name
+    elsif params[:order][:addresses] == "new_address"
       @order.postal_code = params[:order][:postal_code]
       @order.street_address = params[:order][:street_address]
       @order.name = params[:order][:name]
       @received = "1"
 
-      # バリデーションがあるならエラーメッセージを表示
-      unless @order.valid? == true
-        @received = Receiveds.where(member: current_member)
-        render :new
-      end
+       #バリデーションがあるならエラーメッセージを表示
+      #unless  @order.valid?(:step1)
+        #@receiveds = Received.where(member: current_member)
+        #render :new
+      #end
     end
   end
 
