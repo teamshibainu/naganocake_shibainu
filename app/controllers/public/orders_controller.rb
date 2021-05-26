@@ -47,7 +47,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.member_id = current_member.id
     @order.save
-    #byebug
     if params[:order][:received] == "1"
       current_member.address.new(order_params)
     end
@@ -78,10 +77,6 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:postal_code, :street_address, :name, :payment_method, :billing_amount, :shipping_cost, :status)
   end
-
-  #def street_address_params
-  #  params.require(:order).permit(:postal_code, :street_address, :name)
-  #end
 
   def to_order_confirm
     redirect_to member_cart_product_path
