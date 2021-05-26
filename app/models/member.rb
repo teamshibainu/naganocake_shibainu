@@ -20,6 +20,8 @@ class Member < ApplicationRecord
 
 
   #退会機能
+  acts_as_paranoid
+  
   def active_for_authenticcation?
     super && (self.withdrawal_flag == false)
   end

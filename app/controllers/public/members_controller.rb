@@ -5,8 +5,9 @@ class Public::MembersController < ApplicationController
 
   def hide
     @member = Member.find(params[:id])
-    @member.update(withdrawal_flag: true)
-    reset_session
+    @member.destroy
+    #@member.update(withdrawal_flag: true)
+    #reset_session
     redirect_to top_path, notice:"またのご利用をお待ちしております。"
   end
 
