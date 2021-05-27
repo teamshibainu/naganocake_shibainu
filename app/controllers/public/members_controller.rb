@@ -3,12 +3,19 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
+  # def hide
+  #   @member = Member.find(params[:id])
+  #   @member.destroy
+  #   #@member.update(withdrawal_flag: true)
+  #   #reset_session
+  #   redirect_to top_path, notice:"またのご利用をお待ちしております。"
+  # end
+
   def hide
-    @member = Member.find(params[:id])
-    @member.destroy
-    #@member.update(withdrawal_flag: true)
-    #reset_session
-    redirect_to top_path, notice:"またのご利用をお待ちしております。"
+    @member = current_member
+    @member.update(withdrawal_flag: true)
+    reset_session
+    redirect_to top_path, notice: "またのご利用をお待ちしております。"
   end
 
   def edit
