@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_orders_path
     when Member
-      top_path
+      public_member_path(current_member)
     end
   end
 
