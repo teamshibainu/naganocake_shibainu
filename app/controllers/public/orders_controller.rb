@@ -17,13 +17,6 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.street_address = params[:order][:street_address]
       @order.name = params[:order][:name]
-      @received = "1"
-
-       #バリデーションがあるならエラーメッセージを表示
-      #unless  @order.valid?(:step1)
-        #@receiveds = Received.where(member: current_member)
-        #render :new
-      #end
     end
   end
 
@@ -35,8 +28,6 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.orders_details
-    # @order_details = OrdersDetail.where(order_id: @order.id)
-    # @cart_products = current_member.cart_products
   end
 
   def new
@@ -47,7 +38,10 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.member_id = current_member.id
-    @order.save
+  unless  @order.save
+    @receiveds = Received.where(member: current_member)
+    render :new
+  else
     if params[:order][:received] == "1"
       current_member.address.new(order_params)
     end
@@ -65,10 +59,7 @@ class Public::OrdersController < ApplicationController
     end
     @cart_products.destroy_all
     redirect_to public_complete_path
-
-    # 注文完了後、カート商品を空にする
-    #redirect_to public_complete_path, notice:"注文が確定しました。"
-    #@cart_products.destroy_all
+  end
   end
 
   def complete
