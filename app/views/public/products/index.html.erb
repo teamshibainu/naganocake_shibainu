@@ -4,9 +4,9 @@
 	  	<h2 class="col-3 align-self-start text-center text-white bg-secondary mt-4">商品一覧(全<%= @products.total_count %>件)</h2>
 	  	<div class="col-12">
 				<div class="d-inline-flex flex-row flex-wrap product_index p-4">
-		  			<% @products.each do |product| %>
-		    			<%= render "product_individual", product: product %>
-		  			<% end %>
+		  		<% @products.each do |product| %>
+		    		<%= render "product_individual", product: product %>
+		  		<% end %>
 				</div>
 	  	</div>
 	  </div>
