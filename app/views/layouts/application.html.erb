@@ -15,7 +15,7 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <% if admin_signed_in? %>
-          <%= link_to "NaganoCake",admin_top_path, class: 'mt-2 mb-3 text-dark' %>
+          <%= link_to "NaganoCake",admin_orders_path, class: 'mt-2 mb-3 text-dark' %>
           <% else %>
           <%= link_to "NaganoCake",public_root_path, class: 'mt-2 mb-3 text-dark' %>
           <% end %>
