@@ -2,6 +2,9 @@
   <div calss="row">
     <div class="col-xs-12">
       <h2 class="head-line title_h2 text-center">注文情報入力</h2>
+      <% if @order.errors.any? %>
+        <%= @order.errors.count %>件のエラーが発生しています。正しく情報を入力してください!
+      <% end %>
       <% if current_member.cart_products.present? %>
         <div class="col-xs-offset-1">
           <%= form_with model: @order, :url => public_order_confirm_path, method: :post, local: true  do |f| %>

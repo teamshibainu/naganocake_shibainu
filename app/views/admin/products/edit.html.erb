@@ -7,7 +7,6 @@
         <%= form_with model:@product, url: admin_product_path, method: :patch, local:true, class: "form-horizontal" do |f| %>
           <%= render "layouts/error_messages", resource: @product%>
           <%= render "form_new_product", f: f %>
-
           <div class="col text-center">
             <%= f.submit "変更を保存", class: "btn btn-primary pull-right" %>
           </div>
